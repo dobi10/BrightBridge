@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Quiz | EduBright</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <a
+        href="index.html"
+        class="logo">
+        EduBright
+    </a>
+
+    <nav class="nav-links">
+
+        <a href="courses.html">
+            Courses
+        </a>
+
+        <a href="dashboard.html">
+            Dashboard
+        </a>
+
+    </nav>
+
+</header>
+
+
+<main class="lesson-page">
+
+    <div
+        id="quizLoading"
+        class="loading-card">
+
+        Loading quiz...
+
+    </div>
+
+
+    <section
+        id="quizContent"
+        style="display:none;">
+
+        <span
+            id="quizProgress"
+            class="hero-badge">
+
+            Question 1
+
+        </span>
+
+
+        <h1 id="quizTitle">
+            Quiz
+        </h1>
+
+
+        <div
+            id="questionContainer"
+            class="lesson-text">
+
+        </div>
+
+
+        <div
+            id="answersContainer">
+
+        </div>
+
+
+        <button
+            id="nextQuestionBtn"
+            class="btn btn-primary"
+            style="margin-top:20px;">
+
+            Next Question →
+
+        </button>
+
+
+        <div
+            id="quizResult"
+            style="
+                display:none;
+                margin-top:30px;
+                text-align:center;
+            ">
+
+            <h2 id="scoreText">
+                Your Score
+            </h2>
+
+            <p id="resultMessage">
+            </p>
+
+            <a
+                href="dashboard.html"
+                class="btn btn-primary">
+
+                Go to Dashboard
+
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script
+    type="module"
+    src="quiz.js">
+</script>
+
+</body>
+  </html>
