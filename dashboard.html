@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | EduBright</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <a
+        href="index.html"
+        class="logo">
+        EduBright
+    </a>
+
+
+    <nav class="nav-links">
+
+        <a href="dashboard.html">
+            Dashboard
+        </a>
+
+        <a href="courses.html">
+            Courses
+        </a>
+
+        <a href="certificate.html">
+            Certificates
+        </a>
+
+    </nav>
+
+
+    <div class="nav-actions">
+
+        <button
+            id="logoutBtn"
+            class="btn btn-outline">
+
+            Logout
+
+        </button>
+
+    </div>
+
+</header>
+
+
+<main class="dashboard">
+
+    <section class="dashboard-header">
+
+        <h1>
+            Welcome,
+            <span id="userName">
+                Student
+            </span>
+            👋
+        </h1>
+
+        <p>
+            Keep learning and build your future.
+        </p>
+
+    </section>
+
+
+    <!-- Statistics -->
+
+    <section class="stats-grid">
+
+        <article class="stat-card">
+
+            <span>
+                Level
+            </span>
+
+            <strong id="userLevel">
+                1
+            </strong>
+
+        </article>
+
+
+        <article class="stat-card">
+
+            <span>
+                XP
+            </span>
+
+            <strong id="userXP">
+                0
+            </strong>
+
+        </article>
+
+
+        <article class="stat-card">
+
+            <span>
+                Lessons Completed
+            </span>
+
+            <strong id="completedLessons">
+                0
+            </strong>
+
+        </article>
+
+
+        <article class="stat-card">
+
+            <span>
+                Certificates
+            </span>
+
+            <strong id="certificateCount">
+                0
+            </strong>
+
+        </article>
+
+    </section>
+
+
+    <!-- Progress -->
+
+    <section class="admin-card">
+
+        <h2>
+            Your Progress
+        </h2>
+
+        <p>
+            Keep completing lessons to increase
+            your XP and level.
+        </p>
+
+        <div
+            style="
+                width:100%;
+                height:12px;
+                background:#e5e7eb;
+                border-radius:20px;
+                overflow:hidden;
+                margin-top:20px;
+            ">
+
+            <div
+                id="progressBar"
+                style="
+                    width:0%;
+                    height:100%;
+                    background:#2563eb;
+                    transition:width .3s ease;
+                ">
+            </div>
+
+        </div>
+
+        <p
+            id="progressText"
+            style="margin-top:10px;">
+            0% complete
+        </p>
+
+    </section>
+
+
+    <!-- Quick Actions -->
+
+    <section class="section">
+
+        <div class="section-heading">
+
+            <h2>
+                Quick Actions
+            </h2>
+
+        </div>
+
+
+        <div class="feature-grid">
+
+            <article class="feature-card">
+
+                <div class="feature-icon">
+                    📚
+                </div>
+
+                <h3>
+                    Browse Courses
+                </h3>
+
+                <p>
+                    Discover courses and continue
+                    learning new skills.
+                </p>
+
+                <br>
+
+                <a
+                    href="courses.html"
+                    class="btn btn-primary">
+
+                    Explore Courses
+
+                </a>
+
+            </article>
+
+
+            <article class="feature-card">
+
+                <div class="feature-icon">
+                    🏆
+                </div>
+
+                <h3>
+                    Certificates
+                </h3>
+
+                <p>
+                    View your earned certificates.
+                </p>
+
+                <br>
+
+                <a
+                    href="certificate.html"
+                    class="btn btn-primary">
+
+                    View Certificates
+
+                </a>
+
+            </article>
+
+
+            <article class="feature-card">
+
+                <div class="feature-icon">
+                    ⚙️
+                </div>
+
+                <h3>
+                    Settings
+                </h3>
+
+                <p>
+                    Manage your account settings.
+                </p>
+
+                <br>
+
+                <a
+                    href="settings.html"
+                    class="btn btn-primary">
+
+                    Settings
+
+                </a>
+
+            </article>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script
+    type="module"
+    src="dashboard.js">
+</script>
+
+</body>
+
+          </html>
