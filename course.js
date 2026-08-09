@@ -20,29 +20,19 @@ const title =
     document.getElementById("courseTitle");
 
 const description =
-    document.getElementById(
-        "courseDescription"
-    );
+    document.getElementById("courseDescription");
 
 const category =
-    document.getElementById(
-        "courseCategory"
-    );
+    document.getElementById("courseCategory");
 
 const level =
-    document.getElementById(
-        "courseLevel"
-    );
+    document.getElementById("courseLevel");
 
 const lessonCount =
-    document.getElementById(
-        "lessonCount"
-    );
+    document.getElementById("lessonCount");
 
 const lessonsList =
-    document.getElementById(
-        "lessonsList"
-    );
+    document.getElementById("lessonsList");
 
 
 const params =
@@ -57,76 +47,48 @@ const courseId =
 async function loadCourse() {
 
     if (!courseId) {
-
-        showError(
-            "No course was selected."
-        );
-
+        showError("No course was selected.");
         return;
     }
-
 
     try {
 
         const courseRef =
-            doc(
-                db,
-                "courses",
-                courseId
-            );
-
+            doc(db, "courses", courseId);
 
         const courseSnapshot =
             await getDoc(courseRef);
 
-
         if (!courseSnapshot.exists()) {
-
-            showError(
-                "Course not found."
-            );
-
+            showError("Course not found.");
             return;
         }
-
 
         const course =
             courseSnapshot.data();
 
-
         title.textContent =
-            course.title ||
-            "Untitled Course";
-
+            course.title || "Untitled Course";
 
         description.textContent =
             course.description ||
             "No description available.";
 
-
         category.textContent =
-            course.category ||
-            "General";
-
+            course.category || "General";
 
         level.textContent =
-            course.level ||
-            "Beginner";
-
+            course.level || "Beginner";
 
         await loadLessons();
 
+        await loadQuizzes();
 
-        loading.style.display =
-            "none";
-
-        content.style.display =
-            "block";
-
+        loading.style.display = "none";
+        content.style.display = "block";
 
         document.title =
             `${course.title || "Course"} | EduBright`;
-
 
     } catch (error) {
 
@@ -135,9 +97,7 @@ async function loadCourse() {
         showError(
             "Unable to load this course."
         );
-
     }
-
 }
 
 
@@ -149,7 +109,6 @@ async function loadLessons() {
         </div>
     `;
 
-
     try {
 
         const lessonsRef =
@@ -160,9 +119,7 @@ async function loadLessons() {
                 "lessons"
             );
 
-
         let snapshot;
-
 
         try {
 
@@ -173,40 +130,29 @@ async function loadLessons() {
                 );
 
             snapshot =
-                await getDocs(
-                    orderedQuery
-                );
+                await getDocs(orderedQuery);
 
         } catch {
 
             snapshot =
-                await getDocs(
-                    lessonsRef
-                );
-
+                await getDocs(lessonsRef);
         }
-
 
         lessonCount.textContent =
             `${snapshot.size} Lessons`;
 
-
         lessonsList.innerHTML = "";
-
 
         if (snapshot.empty) {
 
             lessonsList.innerHTML = `
                 <div class="loading-card">
-
                     No lessons available yet.
-
                 </div>
             `;
 
             return;
         }
-
 
         snapshot.docs.forEach(
             (lessonDoc, index) => {
@@ -214,20 +160,14 @@ async function loadLessons() {
                 const lesson =
                     lessonDoc.data();
 
-
                 const item =
-                    document.createElement(
-                        "div"
-                    );
-
+                    document.createElement("div");
 
                 item.className =
                     "course-card";
 
-
                 item.style.marginBottom =
                     "12px";
-
 
                 item.innerHTML = `
 
@@ -259,17 +199,11 @@ async function loadLessons() {
                         Start Lesson →
 
                     </a>
-
                 `;
 
-
-                lessonsList.appendChild(
-                    item
-                );
-
+                lessonsList.appendChild(item);
             }
         );
-
 
     } catch (error) {
 
@@ -280,9 +214,97 @@ async function loadLessons() {
                 Could not load lessons.
             </div>
         `;
-
     }
+}
 
+
+async function loadQuizzes() {
+
+    try {
+
+        const quizzesRef =
+            collection(
+                db,
+                "courses",
+                courseId,
+                "quizzes"
+            );
+
+        const snapshot =
+            await getDocs(quizzesRef);
+
+        if (snapshot.empty) {
+            return;
+        }
+
+        const quizSection =
+            document.createElement("section");
+
+        quizSection.style.marginTop =
+            "40px";
+
+        quizSection.innerHTML = `
+            <h2>
+                Course Quizzes
+            </h2>
+        `;
+
+        snapshot.docs.forEach(
+            (quizDoc) => {
+
+                const quiz =
+                    quizDoc.data();
+
+                const card =
+                    document.createElement("div");
+
+                card.className =
+                    "course-card";
+
+                card.style.marginTop =
+                    "15px";
+
+                card.innerHTML = `
+
+                    <h3>
+                        ${escapeHTML(
+                            quiz.title ||
+                            "Quiz"
+                        )}
+                    </h3>
+
+                    <p>
+                        Test what you've learned.
+                    </p>
+
+                    <br>
+
+                    <a
+                        href="quiz.html?course=${encodeURIComponent(
+                            courseId
+                        )}&quiz=${encodeURIComponent(
+                            quizDoc.id
+                        )}"
+                        class="btn btn-primary">
+
+                        Take Quiz →
+
+                    </a>
+                `;
+
+                quizSection.appendChild(card);
+            }
+        );
+
+        content.appendChild(quizSection);
+
+    } catch (error) {
+
+        console.error(
+            "Quiz loading error:",
+            error
+        );
+    }
 }
 
 
@@ -303,24 +325,17 @@ function showError(message) {
 
         </a>
     `;
-
 }
 
 
 function escapeHTML(value) {
 
     return String(value)
-
         .replace(/&/g, "&amp;")
-
         .replace(/</g, "&lt;")
-
         .replace(/>/g, "&gt;")
-
         .replace(/"/g, "&quot;")
-
         .replace(/'/g, "&#039;");
-
 }
 
 
