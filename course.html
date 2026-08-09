@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course | EduBright</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="navbar">
+    <a href="index.html" class="logo">EduBright</a>
+
+    <nav class="nav-links">
+        <a href="courses.html">Courses</a>
+        <a href="dashboard.html">Dashboard</a>
+    </nav>
+
+    <div class="nav-actions">
+        <a href="login.html" class="btn btn-outline">Login</a>
+    </div>
+</header>
+
+
+<main class="course-page">
+
+    <div id="courseLoading" class="loading-card">
+        Loading course...
+    </div>
+
+
+    <section id="courseContent" style="display:none;">
+
+        <span id="courseCategory" class="hero-badge">
+            Course
+        </span>
+
+        <h1 id="courseTitle">
+            Course Title
+        </h1>
+
+        <p id="courseDescription">
+            Course description
+        </p>
+
+        <div class="course-meta">
+
+            <span id="courseLevel" class="tag">
+                Beginner
+            </span>
+
+            <span id="lessonCount" class="tag">
+                0 Lessons
+            </span>
+
+        </div>
+
+
+        <hr style="margin:30px 0;border:0;border-top:1px solid #e5e7eb;">
+
+
+        <h2>
+            Course Lessons
+        </h2>
+
+        <div
+            id="lessonsList"
+            style="margin-top:20px;">
+        </div>
+
+    </section>
+
+</main>
+
+
+<script
+    type="module"
+    src="course.js">
+</script>
+
+</body>
+  </html>
