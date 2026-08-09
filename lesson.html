@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="EduBright lesson">
+
+    <title>Lesson | EduBright</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <a
+        href="index.html"
+        class="logo">
+        EduBright
+    </a>
+
+    <nav class="nav-links">
+
+        <a href="courses.html">
+            Courses
+        </a>
+
+        <a href="dashboard.html">
+            Dashboard
+        </a>
+
+    </nav>
+
+</header>
+
+
+<main class="lesson-page">
+
+    <!-- Loading -->
+
+    <div
+        id="lessonLoading"
+        class="loading-card">
+
+        Loading lesson...
+
+    </div>
+
+
+    <!-- Lesson -->
+
+    <article
+        id="lessonContent"
+        style="display:none;">
+
+        <a
+            id="backToCourse"
+            href="courses.html"
+            class="btn btn-outline">
+
+            ← Back to Course
+
+        </a>
+
+
+        <br>
+        <br>
+
+
+        <span
+            id="lessonNumber"
+            class="hero-badge">
+
+            Lesson
+
+        </span>
+
+
+        <h1 id="lessonTitle">
+            Lesson Title
+        </h1>
+
+
+        <p id="lessonDescription">
+            Lesson description
+        </p>
+
+
+        <!-- Main lesson content -->
+
+        <section
+            id="lessonText"
+            class="lesson-text">
+
+        </section>
+
+
+        <!-- Code -->
+
+        <section
+            id="codeSection"
+            style="display:none;">
+
+            <div class="code-header">
+
+                <strong>
+                    Code Example
+                </strong>
+
+                <button
+                    id="copyCode"
+                    class="copy-code">
+
+                    Copy
+
+                </button>
+
+            </div>
+
+
+            <pre class="code-block"><code
+                id="lessonCode"></code></pre>
+
+        </section>
+
+
+        <br>
+
+
+        <!-- Complete lesson -->
+
+        <button
+            id="completeLessonBtn"
+            class="btn btn-primary">
+
+            Mark Lesson Complete ✓
+
+        </button>
+
+
+        <p
+            id="lessonMessage"
+            role="alert"
+            style="margin-top:15px;">
+        </p>
+
+
+        <!-- Next lesson -->
+
+        <a
+            id="nextLessonBtn"
+            href="#"
+            class="btn btn-primary"
+            style="display:none;margin-top:10px;">
+
+            Next Lesson →
+
+        </a>
+
+    </article>
+
+</main>
+
+
+<script
+    type="module"
+    src="lesson.js">
+</script>
+
+</body>
+
+  </html>
