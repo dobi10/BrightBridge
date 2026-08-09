@@ -1,51 +1,29 @@
-import {
-    initializeApp
-} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+import { initializeApp } from "firebase/app";
 
 import {
     getAuth
-} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
+} from "firebase/auth";
 
 import {
     getFirestore
-} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+} from "firebase/firestore";
 
 
 const firebaseConfig = {
-
-    apiKey:
-        "AIzaSyB_XRuyvQRFuajWF1gdMlSW6WiWMvOopnI",
-
-    authDomain:
-        "edubright-9380b.firebaseapp.com",
-
-    projectId:
-        "edubright-9380b",
-
-    storageBucket:
-        "edubright-9380b.firebasestorage.app",
-
-    messagingSenderId:
-        "934097927978",
-
-    appId:
-        "1:934097927978:web:744cac32d335598ff76853"
-
+    apiKey: "AIzaSyAu8vCNwhZ8irI2Knm7Ssc7Vku2f9XCFtc",
+    authDomain: "brightbridge-0.firebaseapp.com",
+    projectId: "brightbridge-0",
+    storageBucket: "brightbridge-0.firebasestorage.app",
+    messagingSenderId: "809001297248",
+    appId: "1:809001297248:web:4b23e504ef9826bcdcea05"
 };
 
 
-const app =
-    initializeApp(
-        firebaseConfig
-    );
+const app = initializeApp(firebaseConfig);
 
+const auth = getAuth(app);
 
-const auth =
-    getAuth(app);
-
-
-const db =
-    getFirestore(app);
+const db = getFirestore(app);
 
 
 export {
