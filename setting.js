@@ -9,7 +9,7 @@ import {
 import {
     doc,
     getDoc,
-    updateDoc
+    setDoc
 } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 
 
@@ -32,6 +32,9 @@ const logoutBtn =
     document.getElementById("logoutBtn");
 
 
+let currentUser = null;
+
+
 onAuthStateChanged(auth, async (user) => {
 
     if (!user) {
@@ -43,6 +46,8 @@ onAuthStateChanged(auth, async (user) => {
     }
 
 
+    currentUser = user;
+
     emailInput.value =
         user.email || "";
 
@@ -50,11 +55,7 @@ onAuthStateChanged(auth, async (user) => {
     try {
 
         const userRef =
-            doc(
-                db,
-                "users",
-                user.uid
-            );
+            doc(db, "users", user.uid);
 
         const snapshot =
             await getDoc(userRef);
@@ -74,13 +75,17 @@ onAuthStateChanged(auth, async (user) => {
 
             nameInput.value =
                 user.displayName ||
+                user.email?.split("@")[0] ||
                 "";
 
         }
 
     } catch (error) {
 
-        console.error(error);
+        console.error(
+            "Settings load error:",
+            error
+        );
 
     }
 
@@ -94,15 +99,7 @@ form.addEventListener(
         event.preventDefault();
 
 
-        const user =
-            auth.currentUser;
-
-
-        if (!user) {
-
-            window.location.href =
-                "login.html";
-
+        if (!currentUser) {
             return;
         }
 
@@ -114,14 +111,13 @@ form.addEventListener(
         if (name.length < 2) {
 
             message.textContent =
-                "Please enter your name.";
+                "Please enter at least 2 characters.";
 
             return;
         }
 
 
-        saveBtn.disabled =
-            true;
+        saveBtn.disabled = true;
 
         saveBtn.textContent =
             "Saving...";
@@ -130,50 +126,56 @@ form.addEventListener(
         try {
 
             await updateProfile(
-                user,
+                currentUser,
                 {
                     displayName: name
                 }
             );
 
 
-            await updateDoc(
+            await setDoc(
                 doc(
                     db,
                     "users",
-                    user.uid
+                    currentUser.uid
                 ),
                 {
-                    name: name
+                    uid: currentUser.uid,
+                    name: name,
+                    email:
+                        currentUser.email || ""
+                },
+                {
+                    merge: true
                 }
             );
 
 
             message.textContent =
-                "Profile updated successfully! ✓";
-
+                "Profile saved successfully ✓";
 
             message.style.color =
-                "#16a34a";
+                "green";
 
 
         } catch (error) {
 
-            console.error(error);
+            console.error(
+                "SETTINGS ERROR:",
+                error
+            );
 
 
             message.textContent =
-                "Could not update your profile.";
-
+                error.message;
 
             message.style.color =
-                "#dc2626";
+                "red";
 
         }
 
 
-        saveBtn.disabled =
-            false;
+        saveBtn.disabled = false;
 
         saveBtn.textContent =
             "Save Changes";
@@ -186,25 +188,10 @@ logoutBtn.addEventListener(
     "click",
     async () => {
 
-        try {
+        await signOut(auth);
 
-            await signOut(auth);
-
-            localStorage.removeItem(
-                "userID"
-            );
-
-            window.location.href =
-                "index.html";
-
-        } catch (error) {
-
-            console.error(
-                "Logout error:",
-                error
-            );
-
-        }
+        window.location.href =
+            "index.html";
 
     }
 );
