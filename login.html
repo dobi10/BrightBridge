@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Login to your EduBright account.">
+
+    <title>Login | EduBright</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <a href="index.html" class="logo">
+        EduBright
+    </a>
+
+    <div class="nav-actions">
+
+        <a
+            href="index.html"
+            class="btn btn-outline">
+            Home
+        </a>
+
+        <a
+            href="signup.html"
+            class="btn btn-primary">
+            Sign Up
+        </a>
+
+    </div>
+
+</header>
+
+
+<main class="auth-container">
+
+    <section class="auth-card">
+
+        <h1>
+            Welcome Back 👋
+        </h1>
+
+        <p>
+            Login to continue your learning journey.
+        </p>
+
+
+        <form id="loginForm">
+
+            <label for="email">
+                Email
+            </label>
+
+            <input
+                id="email"
+                type="email"
+                placeholder="you@example.com"
+                autocomplete="email"
+                required
+            >
+
+
+            <label for="password">
+                Password
+            </label>
+
+            <input
+                id="password"
+                type="password"
+                placeholder="Your password"
+                autocomplete="current-password"
+                required
+            >
+
+
+            <button
+                id="loginBtn"
+                type="submit">
+
+                Login
+
+            </button>
+
+        </form>
+
+
+        <p
+            id="loginMessage"
+            role="alert">
+        </p>
+
+
+        <p class="auth-link">
+
+            Don't have an account?
+
+            <a href="signup.html">
+                Create one
+            </a>
+
+        </p>
+
+
+        <p class="auth-link">
+
+            <a href="index.html">
+                ← Back to EduBright
+            </a>
+
+        </p>
+
+    </section>
+
+</main>
+
+
+<script
+    type="module"
+    src="login.js">
+</script>
+
+</body>
+
+</html>
