@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Settings | EduBright</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <a href="index.html" class="logo">
+        EduBright
+    </a>
+
+    <div class="nav-actions">
+
+        <a
+            href="dashboard.html"
+            class="btn btn-outline">
+
+            ← Dashboard
+
+        </a>
+
+    </div>
+
+</header>
+
+
+<main class="auth-container">
+
+    <section class="auth-card">
+
+        <h1>
+            Account Settings ⚙️
+        </h1>
+
+        <p>
+            Manage your EduBright profile.
+        </p>
+
+
+        <form id="settingsForm">
+
+            <label for="name">
+                Full Name
+            </label>
+
+            <input
+                id="name"
+                type="text"
+                maxlength="80"
+                required
+            >
+
+
+            <label for="email">
+                Email
+            </label>
+
+            <input
+                id="email"
+                type="email"
+                disabled
+            >
+
+
+            <button
+                id="saveBtn"
+                type="submit">
+
+                Save Changes
+
+            </button>
+
+        </form>
+
+
+        <p
+            id="settingsMessage"
+            role="alert">
+        </p>
+
+
+        <hr style="margin:30px 0;">
+
+
+        <h2>
+            Account
+        </h2>
+
+        <br>
+
+        <button
+            id="logoutBtn"
+            class="btn btn-outline">
+
+            Logout
+
+        </button>
+
+    </section>
+
+</main>
+
+
+<script
+    type="module"
+    src="settings.js">
+</script>
+
+</body>
+
+</html>
