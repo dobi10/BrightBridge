@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Certificate | EduBright</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+
+    <style>
+
+        .certificate {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 60px 40px;
+            text-align: center;
+            border: 8px solid #2563eb;
+            background: white;
+            box-shadow: 0 20px 50px rgba(0,0,0,.12);
+        }
+
+        .certificate h1 {
+            font-size: 42px;
+            margin: 20px 0;
+        }
+
+        .certificate-name {
+            font-size: 34px;
+            font-weight: 700;
+            margin: 25px 0;
+        }
+
+        .certificate-course {
+            font-size: 22px;
+            margin: 20px 0;
+        }
+
+        .certificate-id {
+            margin-top: 40px;
+            font-size: 13px;
+            color: #64748b;
+        }
+
+        @media(max-width:600px) {
+
+            .certificate {
+                margin: 20px;
+                padding: 35px 20px;
+            }
+
+            .certificate h1 {
+                font-size: 30px;
+            }
+
+            .certificate-name {
+                font-size: 25px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <a
+        href="index.html"
+        class="logo">
+        EduBright
+    </a>
+
+    <div class="nav-actions">
+
+        <a
+            href="certificate.html"
+            class="btn btn-outline">
+
+            ← Certificates
+
+        </a>
+
+        <button
+            id="printBtn"
+            class="btn btn-primary">
+
+            Print / Save
+
+        </button>
+
+    </div>
+
+</header>
+
+
+<main>
+
+    <div
+        id="certificateLoading"
+        class="loading-card">
+
+        Loading certificate...
+
+    </div>
+
+
+    <section
+        id="certificate"
+        class="certificate"
+        style="display:none;">
+
+        <div class="feature-icon">
+            🏆
+        </div>
+
+
+        <p>
+            EDUBRIGHT
+        </p>
+
+
+        <h1>
+            Certificate of Completion
+        </h1>
+
+
+        <p>
+            This certificate is proudly presented to
+        </p>
+
+
+        <div
+            id="certificateName"
+            class="certificate-name">
+
+            Student
+
+        </div>
+
+
+        <p>
+            for successfully completing
+        </p>
+
+
+        <div
+            id="certificateCourse"
+            class="certificate-course">
+
+            Course
+
+        </div>
+
+
+        <p id="certificateDate">
+        </p>
+
+
+        <p
+            id="certificateId"
+            class="certificate-id">
+
+        </p>
+
+    </section>
+
+</main>
+
+
+<script
+    type="module"
+    src="certificate-view.js">
+</script>
+
+</body>
+
+</html>
